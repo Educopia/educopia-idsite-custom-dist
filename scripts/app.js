@@ -48,7 +48,7 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       if (Stormpath.getProvider('facebook')) {
         initFB();
       }
-      $scope.jwtPayload = Stormpath.client();
+      $scope.jwtPayload = Stormpath.client().jwtPayload;
       window.Stormpath = Stormpath;
     });
     var googleIsSignedIn = false;
