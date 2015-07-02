@@ -51,6 +51,7 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       $scope.jwtPayload = Stormpath.Client().jwtPayload;
       window.Stormpath = Stormpath;
     });
+    window.Stormpath2 = Stormpath;
     var googleIsSignedIn = false;
     function initFB() {
       $window.fbAsyncInit = function () {
