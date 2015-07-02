@@ -48,7 +48,7 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       if (Stormpath.getProvider('facebook')) {
         initFB();
       }
-      $scope.jwtPayload = Stormpath.Client().jwtPayload;
+      $scope.jwtPayload = new Stormpath.Client().jwtPayload;
       window.Stormpath = Stormpath;
     });
     window.Stormpath2 = Stormpath;
