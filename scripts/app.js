@@ -40,12 +40,10 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       userMessage: false,
       unknown: false
     };
-    //$scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri
     console.log('login!!', Stormpath);
     Stormpath.init.then(function initSuccess(data) {
-      console.log(data);
+      console.log('data', data);
       console.log('Stormpath', Stormpath);
-      console.log('Stormpath', idSiteModel);
       $scope.canRegister = !!Stormpath.idSiteModel.passwordPolicy;
       $scope.providers = Stormpath.providers;
       $scope.ready = true;
@@ -53,6 +51,7 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       if (Stormpath.getProvider('facebook')) {
         initFB();
       }
+      $scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri;
     });
     var googleIsSignedIn = false;
     function initFB() {
