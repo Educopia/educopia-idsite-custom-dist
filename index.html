@@ -318,8 +318,9 @@
     <![endif]-->
 
     <div class="container" ng-controller="ErrorCtrl" ng-cloak>
-*<div>{{jwtPayload}}</div>*
-*<div>{{jwtPayload2}}</div>*
+<pre><div ng-bind='jwtPayload'></div>
+<div ng-bind='jwtPayload2'></div>
+</pre>
 
       <div class="logo-container">
         <img ng-show="logoUrl" class="logo img-responsive" ng-src="{{logoUrl}}"/>
