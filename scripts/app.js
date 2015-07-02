@@ -40,8 +40,8 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       userMessage: false,
       unknown: false
     };
-    $scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri;
-    console.log('login!!');
+    //$scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri
+    console.log('login!!', Stormpath);
     Stormpath.init.then(function initSuccess(data) {
       console.log(data);
       console.log('Stormpath', Stormpath);
