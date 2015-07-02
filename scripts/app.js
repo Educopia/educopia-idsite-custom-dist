@@ -40,10 +40,12 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       userMessage: false,
       unknown: false
     };
+    $scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri;
+    console.log('login!!');
     Stormpath.init.then(function initSuccess(data) {
       console.log(data);
-      console.log(Stormpath);
-      console.log(idSiteModel);
+      console.log('Stormpath', Stormpath);
+      console.log('Stormpath', idSiteModel);
       $scope.canRegister = !!Stormpath.idSiteModel.passwordPolicy;
       $scope.providers = Stormpath.providers;
       $scope.ready = true;
