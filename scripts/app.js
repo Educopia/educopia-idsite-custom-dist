@@ -23,7 +23,9 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).constant('cburi', '(function(){ return Stormpath.Client().jwtPayload.cb_uri})()');
+  ]).constant('cburi', function () {
+    return Stormpath.Client().jwtPayload.cb_uri;
+  }());
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
