@@ -1,5 +1,8 @@
 'use strict';
 (function () {
+  console.log(function () {
+    return new Stormpath.Client().jwtPayload.cb_uri;
+  }());
   angular.module('stormpathIdpApp', ['ngRoute']).config([
     '$routeProvider',
     function ($routeProvider) {
@@ -23,9 +26,7 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).constant('CBURI', function () {
-    return new Stormpath.Client().jwtPayload.cb_uri;
-  }());
+  ]).constant('CBURI', 'xxx');
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
