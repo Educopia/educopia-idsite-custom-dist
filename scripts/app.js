@@ -32,6 +32,8 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
   'Stormpath',
   '$window',
   function ($scope, Stormpath, $window) {
+    console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri);
+    console.log('Stormpath', Stormpath);
     $scope.ready = false;
     //todo: back to false!!!
     $scope.canRegister = false;
@@ -41,10 +43,7 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
       userMessage: false,
       unknown: false
     };
-    console.log('Stormpath', Stormpath);
     Stormpath.init.then(function initSuccess() {
-      console.log('Stormpath.Client', Stormpath.Client);
-      console.log('Stormpath success', Stormpath);
       $scope.canRegister = !!Stormpath.idSiteModel.passwordPolicy;
       $scope.providers = Stormpath.providers;
       $scope.ready = true;
