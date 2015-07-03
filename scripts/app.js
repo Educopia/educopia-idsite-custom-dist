@@ -24,10 +24,8 @@
       }).otherwise({ redirectTo: '/' });
     }
   ]).value('cb_uri', function () {
-    (function () {
-      return new Stormpath.Client().jwtPayload.cb_uri;
-    }());
-  });
+    return new Stormpath.Client().jwtPayload.cb_uri;
+  }());
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
