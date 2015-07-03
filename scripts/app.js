@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-  console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri);
+  // console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri)
   angular.module('stormpathIdpApp', ['ngRoute']).config([
     '$routeProvider',
     function ($routeProvider) {
@@ -32,8 +32,6 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
   'Stormpath',
   '$window',
   function ($scope, Stormpath, $window) {
-    console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri);
-    console.log('Stormpath', Stormpath);
     $scope.ready = false;
     //todo: back to false!!!
     $scope.canRegister = false;

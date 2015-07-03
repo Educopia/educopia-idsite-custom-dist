@@ -27275,7 +27275,6 @@ if (typeof jQuery === 'undefined') {
         var utils = _dereq_('./utils');
         var base64 = utils.base64;
         function Client(options, readyCallback) {
-          console.log('cleint construct');
           var opts = typeof options === 'object' ? options : {};
           var cb = typeof options === 'function' ? options : readyCallback || utils.noop;
           var self = this;
