@@ -24,7 +24,9 @@
       }).otherwise({ redirectTo: '/' });
     }
   ]).value('cb_uri', function () {
-    return Stormpath.Client().jwtPayload.cb_uri;
+    (function () {
+      return new Stormpath.Client().jwtPayload.cb_uri;
+    }());
   });
 }(window));
 'use strict';
