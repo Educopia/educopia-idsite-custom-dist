@@ -1,6 +1,5 @@
 'use strict';
 (function () {
-  // console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri)
   angular.module('stormpathIdpApp', ['ngRoute']).config([
     '$routeProvider',
     function ($routeProvider) {
@@ -24,7 +23,9 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]);
+  ]).factory('cb_uri', function () {
+    return Stormpath.Client().jwtPayload.cb_uri;
+  });
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
@@ -251,7 +252,9 @@ angular.module('stormpathIdpApp').controller('VerifyCtrl', [
 angular.module('stormpathIdpApp').controller('ErrorCtrl', [
   '$scope',
   'Stormpath',
-  function ($scope, Stormpath) {
+  'cb_uri',
+  function ($scope, Stormpath, cb_uri) {
+    console.warn('cb_uri', cb_uri);
     $scope.errors = Stormpath.errors;
     $scope.inError = false;
     // todo: uncomment!!!!
