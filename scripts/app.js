@@ -253,6 +253,7 @@ angular.module('stormpathIdpApp').controller('ErrorCtrl', [
   '$scope',
   'Stormpath',
   function ($scope, Stormpath) {
+    console.log('Stormpath.Client', Stormpath.Client);
     $scope.jwtPayload = Stormpath.Client().jwtPayload.cb_uri;
     $scope.errors = Stormpath.errors;
     $scope.inError = false;
