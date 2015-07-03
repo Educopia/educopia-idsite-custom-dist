@@ -23,9 +23,9 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).factory('cb_uri', function geetcb_uri() {
-    return Stormpath.Client().jwtPayload.cb_uri;
-  });
+  ]).constant('cb_uri', function () {
+    Stormpath.Client().jwtPayload.cb_uri;
+  }());
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
