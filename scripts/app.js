@@ -42,6 +42,8 @@ angular.module('stormpathIdpApp').controller('LoginCtrl', [
     };
     console.log('Stormpath', Stormpath);
     Stormpath.init.then(function initSuccess() {
+      console.log('Stormpath.Client', Stormpath);
+      $scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri;
       console.log('Stormpath success', Stormpath);
       $scope.canRegister = !!Stormpath.idSiteModel.passwordPolicy;
       $scope.providers = Stormpath.providers;
@@ -253,8 +255,6 @@ angular.module('stormpathIdpApp').controller('ErrorCtrl', [
   '$scope',
   'Stormpath',
   function ($scope, Stormpath) {
-    console.log('Stormpath.Client', Stormpath);
-    $scope.jwtPayload = new Stormpath.Client().jwtPayload.cb_uri;
     $scope.errors = Stormpath.errors;
     $scope.inError = false;
     // todo: uncomment!!!!
