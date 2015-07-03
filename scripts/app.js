@@ -23,7 +23,7 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).factory('cb_uri', function () {
+  ]).factory('cb_uri', function geetcb_uri() {
     return Stormpath.Client().jwtPayload.cb_uri;
   });
 }(window));
