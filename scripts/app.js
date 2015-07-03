@@ -1,5 +1,6 @@
 'use strict';
 (function () {
+  console.log('cb_uri', new Stormpath.Client().jwtPayload.cb_uri);
   angular.module('stormpathIdpApp', ['ngRoute']).config([
     '$routeProvider',
     function ($routeProvider) {
