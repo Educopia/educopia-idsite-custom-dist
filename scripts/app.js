@@ -23,7 +23,7 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).constant('cburi', function () {
+  ]).constant('CBURI', function () {
     return Stormpath.Client().jwtPayload.cb_uri;
   }());
 }(window));
@@ -252,9 +252,9 @@ angular.module('stormpathIdpApp').controller('VerifyCtrl', [
 angular.module('stormpathIdpApp').controller('ErrorCtrl', [
   '$scope',
   'Stormpath',
-  'cburi',
-  function ($scope, Stormpath, cburi) {
-    console.log('cb_uri', cburi);
+  'CBURI',
+  function ($scope, Stormpath, CBURI) {
+    console.log('cb_uri', CBURI);
     $scope.errors = Stormpath.errors;
     $scope.inError = false;
     // todo: uncomment!!!!
