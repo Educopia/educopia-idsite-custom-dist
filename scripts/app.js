@@ -252,9 +252,7 @@ angular.module('stormpathIdpApp').controller('VerifyCtrl', [
 angular.module('stormpathIdpApp').controller('ErrorCtrl', [
   '$scope',
   'Stormpath',
-  'cb_uri',
-  function ($scope, Stormpath, cb_uri) {
-    console.warn('cb_uri', cb_uri);
+  function ($scope, Stormpath) {
     $scope.errors = Stormpath.errors;
     $scope.inError = false;
     // todo: uncomment!!!!
