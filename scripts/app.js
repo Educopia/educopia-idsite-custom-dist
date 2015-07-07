@@ -341,22 +341,22 @@ angular.module('stormpathIdpApp').service('Stormpath', [
         });
       });
     };
-    this.register = function register(data, cb) {
-      client.register(data, function (err, response) {
-        $rootScope.$apply(function () {
-          if (err) {
-            cb(err);
-          } else if (response.redirectUrl) {
-            redirect(response.redirectUrl);
-          } else {
-            self.isRegistered = true;
-            $location.path('/unverified');
-          }
-        });
-      });
-    };
+    // this.register = function register(data,cb){
+    //   client.register(data,function(err,response){
+    //     $rootScope.$apply(function(){
+    //       if(err){
+    //         cb(err);
+    //       }else if(response.redirectUrl){
+    //         redirect(response.redirectUrl);
+    //       }else{
+    //         self.isRegistered = true;
+    //         $location.path('/unverified');
+    //       }
+    //     });
+    //   });
+    // };
     this.verifyEmailToken = function verifyEmailToken(cb) {
-      client.verifyEmailToken(function (err) {
+      self.client.verifyEmailToken(function (err) {
         $rootScope.$apply(function () {
           self.isVerified = err ? false : true;
           cb(err);
@@ -364,21 +364,21 @@ angular.module('stormpathIdpApp').service('Stormpath', [
       });
     };
     this.verifyPasswordToken = function verifyPasswordToken(cb) {
-      client.verifyPasswordResetToken(function (err, resp) {
+      self.client.verifyPasswordResetToken(function (err, resp) {
         $rootScope.$apply(function () {
           cb(err, resp);
         });
       });
     };
     this.sendPasswordResetEmail = function sendPasswordResetEmail(email, cb) {
-      client.sendPasswordResetEmail(email, function (err) {
+      self.client.sendPasswordResetEmail(email, function (err) {
         $rootScope.$apply(function () {
           cb(err);
         });
       });
     };
     this.setNewPassword = function setNewPassword(pwTokenVerification, newPassword, cb) {
-      client.setAccountPassword(pwTokenVerification, newPassword, function (err, resp) {
+      self.client.setAccountPassword(pwTokenVerification, newPassword, function (err, resp) {
         $rootScope.$apply(function () {
           cb(err, resp);
         });
