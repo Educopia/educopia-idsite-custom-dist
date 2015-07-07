@@ -23,17 +23,11 @@
         controller: 'UnverifiedCtrl'
       }).otherwise({ redirectTo: '/' });
     }
-  ]).constant('restart_uri', 'http://resa-stage.educopia.com/teach-ohio/').run([
-    'Stormpath',
-    function (Stormpath) {
-      Stormpath.init.then(function () {
-        console.log('cb_uri', Stormpath.client.jwtPayload.cb_uri);
-      }).catch(function (err) {
-        console.log('init error', err);
-        console.log('cb_uri', Stormpath.client.jwtPayload.cb_uri);
-      });
-    }
-  ]);
+  ]).constant('restart_uri', 'http://resa-stage.educopia.com/teach-ohio/');  //  .run(function(Stormpath){
+                                                                             //     Stormpath.init.then(function(){
+                                                                             //      console.log('cb_uri',Stormpath.client.jwtPayload.cb_uri);
+                                                                             //    })
+                                                                             // });
 }(window));
 'use strict';
 angular.module('stormpathIdpApp').controller('LoginCtrl', [
@@ -285,7 +279,7 @@ angular.module('stormpathIdpApp').service('Stormpath', [
     var params = $location.search();
     var stormpath = $window.Stormpath;
     var ieMatch = $window.navigator.userAgent.match(/MSIE ([0-9.]+)/);
-    //var client;
+    var client;
     self.init = init.promise;
     self.errors = [];
     self.jwt = params.jwt;
@@ -312,11 +306,10 @@ angular.module('stormpathIdpApp').service('Stormpath', [
           return;
         }
       }
-      self.client = new stormpath.Client(function (err, idSiteModel) {
+      client = new stormpath.Client(function (err, idSiteModel) {
         $rootScope.$apply(function () {
           if (err) {
             showError(err);
-            init.reject(err);
           } else {
             var m = idSiteModel;
             self.idSiteModel = m;
